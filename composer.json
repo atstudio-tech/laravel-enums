@@ -1,0 +1,30 @@
+{
+    "name": "atstudio-tech/enums",
+    "description": "A set of classes that enhance PHP enums.",
+    "license": "MIT",
+    "authors": [
+        {
+            "role": "Developer",
+            "name": "Alex Torscho"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ATStudio\\Enums\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ATStudio\\Enums\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {},
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
