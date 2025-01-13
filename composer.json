@@ -1,6 +1,6 @@
 {
-    "name": "atstudio-tech/enums",
-    "description": "A set of classes that enhance PHP enums.",
+    "name": "atstudio-tech/laravel-enums",
+    "description": "A Laravel package that enhances PHP enums.",
     "license": "MIT",
     "authors": [
         {
@@ -8,6 +8,14 @@
             "name": "Alex Torscho"
         }
     ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^11.25"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.2",
+        "pestphp/pest-plugin-laravel": "^3.0"
+    },
     "autoload": {
         "psr-4": {
             "ATStudio\\Enums\\": "src/"
@@ -18,13 +26,40 @@
             "ATStudio\\Enums\\Tests\\": "tests/"
         }
     },
-    "require": {
-        "php": "^8.2"
-    },
-    "require-dev": {},
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ATStudio\\Enums\\ServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
+        ],
+        "lint": [
+            "@php vendor/bin/phpstan analyse --verbose --ansi"
+        ],
+        "test": [
+            "@php vendor/bin/pest"
+        ]
     }
 }
