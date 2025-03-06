@@ -4,7 +4,7 @@ This package contains a collection of helpful methods for working with PHP enums
 
 ## Usage
 
-> In progres...
+> In progress...
 
 ## Changelog
 Please see [CHANGELOG](CHANGELOG) for more information on what has changed recently.
